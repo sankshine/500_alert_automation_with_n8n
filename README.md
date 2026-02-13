@@ -50,30 +50,30 @@ Telecom operations teams manually monitored usage patterns and investigated pote
            │
            ▼
 ┌──────────────────────────────────────────────────────────────┐
-│              STREAM PROCESSING ENGINE (Python / Faust)        │
-│                                                               │
+│              STREAM PROCESSING ENGINE (Python )              │
+│                                                              │
 │  ┌─────────────────┐  ┌──────────────────┐  ┌─────────────┐ │
-│  │ Usage Anomaly    │  │ Multi-SIM         │  │ Velocity    │ │
-│  │ Detector         │  │ Fraud Detector    │  │ Check       │ │
-│  │ ($500+ threshold │  │ (Graph-based      │  │ (Burst      │ │
-│  │  + Z-score)      │  │  identity link)   │  │  detection) │ │
+│  │ Usage Anomaly    │  │ Multi-SIM       │  │ Velocity    │ │
+│  │ Detector         │  │ Fraud Detector  │  │ Check       │ │
+│  │ ($500+ threshold │  │ (Graph-based    │  │ (Burst      │ │
+│  │  + Z-score)      │  │  identity link) │  │  detection) │ │
 │  └────────┬────────┘  └────────┬─────────┘  └──────┬──────┘ │
 └───────────┼─────────────────────┼──────────────────┼─────────┘
             │                     │                  │
             ▼                     ▼                  ▼
 ┌──────────────────────────────────────────────────────────────┐
-│                  ALERT ROUTING ENGINE                          │
-│                                                               │
+│                  ALERT ROUTING ENGINE                        │
+│                                                              │
 │   Risk Score → Priority (P1/P2/P3) → n8n Webhook Trigger     │
 └──────────┬───────────────────────────────────────────────────┘
            │
      ┌─────┴──────────────────────────────────┐
      ▼                                         ▼
 ┌──────────────┐                    ┌──────────────────────────┐
-│ n8n Workflows│                    │ Data Sink                 │
-│ - Slack alert│                    │ - BigQuery (analytics)    │
-│ - Email      │                    │ - Elasticsearch (search)  │
-│ - ServiceNow │                    │ - MicroStrategy (dashbd)  │
+│ n8n Workflows│                    │ Data Sink                │
+│ - Slack alert│                    │ - BigQuery (analytics)   │
+│ - Email      │                    │ - Elasticsearch (search) │
+│ - ServiceNow │                    │ - MicroStrategy (dashbd) │
 │ - Auto-block │                    └──────────────────────────┘
 └──────────────┘
 ```
@@ -82,7 +82,7 @@ Telecom operations teams manually monitored usage patterns and investigated pote
 
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
-| **Streaming** | Apache Kafka + Faust | Real-time event processing |
+| **Streaming** | Apache Kafka  | Real-time event processing |
 | **Detection** | Python (scikit-learn, NetworkX) | Fraud pattern detection |
 | **Automation** | n8n (self-hosted) | Workflow orchestration & alerting |
 | **Dashboard** | MicroStrategy + Streamlit | Executive & operational views |
